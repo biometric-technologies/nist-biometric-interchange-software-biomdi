@@ -1,0 +1,6 @@
+The irextool program uses the Jasper library to manipulate the images contained
+in the IREX record. Jasper can be found at:
+http://www.ece.uvic.ca/~mdadams/jasper/
+
+Installation of Jasper is required in order to build irextool. Jasper is often
+included in the OS package system or ports systems for FreeBSD, OS-X, or Linux.

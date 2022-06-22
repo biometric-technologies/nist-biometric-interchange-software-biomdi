@@ -1,0 +1,34 @@
+--------------------------------------------------------------------------------
+This software was developed at the National Institute of Standards and
+Technology (NIST) by employees of the Federal Government in the course
+of their official duties. Pursuant to title 17 Section 105 of the
+United States Code, this software is not subject to copyright protection
+and is in the public domain. NIST assumes no responsibility  whatsoever for
+its use by other parties, and makes no guarantees, expressed or implied,
+about its quality, reliability, or any other characteristic.
+--------------------------------------------------------------------------------
+
+This distribution contains a library to verify components of the Personal
+Identity Verification (PIV) records. The PIV library validates the CBEFF header.
+The pivv program validates a PIV record that contains minutiae records.
+PIV fingerprint minutiae records conform to the INCITS 378-2004 standard,
+and therefore, the pivv program uses the FMR library contained in the
+BIOMDI fingerminutiae package.
+See www.csrc.nist.gov/piv-program/index.html for information on the PIV program.
+
+This package requires some packages from the BIOMDI distribution. You must
+build and install the common, fingerminutiae, fingerimage, and
+facerecognition libraries before building this PIV package. The BIOMDI
+distribution is available from http://fingerprint.nist.gov/
+
+Also required is the smartcard package from the BIOMAPP distribution that
+includes this PIV package. The PIV build system assumes that the smartcard
+package is installed; if not, you can change the make files that define
+the COMMONINCOPT and COMMONLIBOPT to add the location of the smartcard
+include and library files. See common.mk file for details.
+
+The top-level make file will build all packages in the correct order.
+
+OS-X includes PCSC development headers after installing "Command Line Tools,"
+or by building with xcrun. Refer to Apple Technical Note TN 2339 for details:
+https://developer.apple.com/library/ios/technotes/tn2339/_index.html

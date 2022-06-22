@@ -1,0 +1,36 @@
+#
+# This software was developed at the National Institute of Standards and
+# Technology (NIST) by employees of the Federal Government in the course
+# of their official duties. Pursuant to title 17 Section 105 of the
+# United States Code, this software is not subject to copyright protection
+# and is in the public domain. NIST assumes no responsibility  whatsoever for
+# its use by other parties, and makes no guarantees, expressed or implied,
+# about its quality, reliability, or any other characteristic.
+#
+
+
+# dummy.c is present here as a fake IREX library
+
+
+SOURCES = iid.c iid_ext.c bicubic_interpolation.c bilinear_interpolation.c irex.c irexSDKv.c dummy.c
+OBJECTS = iid.o iid_ext.o bicubic_interpolation.o bilinear_interpolation.o irex.o irexSDKv.o dummy.o
+all: $(OBJECTS) irexSDKv
+
+# IREX participants might want to edit the compilation line below 
+# and edit the controlling irex_supplier.h
+$(OBJECTS): $(SOURCES)
+	gcc -m32 -Wall -c -I. $?
+
+# IREX participants might need to edit the link line below vis-a-vis
+# 1.  use of gcc or g++
+# 2.  the name of the libraries, -lvendorirex
+
+irexSDKv:
+	g++ -m32 -Wall -L. $(OBJECTS) -lm -o $@
+	mkdir -p output/t6/croponly output/t6/cropmask output/t6/unsegpolar
+	mkdir -p output/templates/croponly output/templates/cropmask output/templates/unsegpolar
+	mkdir -p output/matching/croponly output/matching/cropmask output/matching/unsegpolar
+
+clean:
+	rm -f irexSDKv irexSDKv.exe $(OBJECTS)
+	rm -rf output

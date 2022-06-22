@@ -1,0 +1,10 @@
+The irexsdkv is a "virtual" package for the IREX SDK test driver, that is
+(mostly) integrated from the packages used by the irexSDKv program.
+This package's directory can be tar'd/ZIP'd/etc. and copied to the
+test systems en-masse for convenience, negating the need to have the
+BIOMDI and BIOMAPP packages installed. This virtual package should
+build stand-alone, except for the normal system dependencies.
+
+NOTE: As of October 2009, this package is no longer being maintained and
+exists for historical reasons only. The last version of code herein is that
+used for the NIST IREX 2008 Evaluation.

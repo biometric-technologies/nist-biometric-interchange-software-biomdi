@@ -1,0 +1,72 @@
+.\""
+.Dd November 13, 2007
+.Dt PRBIT 1  
+.Os Mac OS X       
+.Sh NAME
+.Nm prbit
+.Nd Prints a Biometric Information Template (BIT) record in human-readable form.
+.Sh SYNOPSIS
+.Nm
+.Ar bitfile
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to print a Biometric Information Template (BIT) record in
+human-readable form. The BIT is expected to be of the form described in the
+NIST MINEX-II test specification. The
+.Nm
+program is part of the NIST match-on-card testing suite.
+.Pp
+.Sh EXAMPLES
+\'prbit 1234ABCD.bit'
+.Pp
+would produce output something like this:
+.Pp
+TAG 0x7F61, Length 65, Value 
+    TAG 0x02, Length 1, Value 0x02 
+    TAG 0x7F60, Length 28, Value 
+        TAG 0xA1, Length 26, Value 
+            TAG 0x81, Length 1, Value 0x08 
+            TAG 0x82, Length 1, Value 0x02 
+            TAG 0x87, Length 2, Value 0x12 34 
+            TAG 0x88, Length 2, Value 0xAB CD 
+            TAG 0xB1, Length 10, Value 
+                TAG 0x81, Length 2, Value 0x0C 40 
+                TAG 0x82, Length 1, Value 0x11 
+                TAG 0x83, Length 1, Value 0x00 
+    TAG 0x7F60, Length 28, Value 
+        TAG 0xA1, Length 26, Value 
+            TAG 0x81, Length 1, Value 0x08 
+            TAG 0x82, Length 1, Value 0x07 
+            TAG 0x87, Length 2, Value 0x12 34 
+            TAG 0x88, Length 2, Value 0xAB CE 
+            TAG 0xB1, Length 10, Value 
+                TAG 0x81, Length 2, Value 0x0C 40 
+                TAG 0x82, Length 1, Value 0x11 
+                TAG 0x83, Length 1, Value 0x00 
+-------------------------------
+.Pp
+2 BITs in the group:
+BIT 1:
+        Biometric Type: 8
+        Biometric Subtype: 2
+        CBEFF: 0x1234:ABCD
+        Minutiae min/max: 12:64
+        Minutiae Order: 0x11
+        Feature Handling: 0x00
+BIT 2:
+        Biometric Type: 8
+        Biometric Subtype: 7
+        CBEFF: 0x1234:ABCE
+        Minutiae min/max: 12:64
+        Minutiae Order: 0x11
+        Feature Handling: 0x00
+.Pp
+.Sh STANDARDS
+``Identification cards - Integrated circuit cards - Part 4: Organization,
+security and commands for interchange'',
+ISO 7816-4 2005-01-15.
+.Pp
+.Sh HISTORY
+Created November 13th, 2007 by NIST.

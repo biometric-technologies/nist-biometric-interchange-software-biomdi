@@ -1,0 +1,25 @@
+--------------------------------------------------------------------------------
+This software was developed at the National Institute of Standards and
+Technology (NIST) by employees of the Federal Government in the course
+of their official duties. Pursuant to title 17 Section 105 of the
+United States Code, this software is not subject to copyright protection
+and is in the public domain. NIST assumes no responsibility  whatsoever for
+its use by other parties, and makes no guarantees, expressed or implied,
+about its quality, reliability, or any other characteristic.
+--------------------------------------------------------------------------------
+
+This package contains software used to interact with Smartcard-based identity
+cards using the fingerprint minutiae match-on-card features.
+
+This software requires:
+
+The NIST the common and fingerminutia packages that are part of the BIOMDI
+project, available at 
+
+http://www.itl.nist.gov/iad/894.03/nigos/biomdi.html;
+
+The NIST smart card library (libsmc) part of the same BIOMAPP project, which
+must be built first;
+
+The MUSCLE smart card library for Linux (http://www.linuxnet.com/).
+(Note that most of the MUSCLE library is include in Mac OS-X 10.4 and later).

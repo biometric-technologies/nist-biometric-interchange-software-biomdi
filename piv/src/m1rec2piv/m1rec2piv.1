@@ -1,0 +1,126 @@
+.\""
+.Dd September 20, 2006
+.Dt M1REC2PIV 1  
+.Sh NAME
+.Nm m1rec2piv
+.Nd Create a Personal Identity Verification record, from
+a set of finger minutiae records or a set of finger image records.
+The PIV record
+will meet the criteria specified in NIST Special Publication 800-76-1
+in all aspects excepting the signature block length, which will be set to 0.
+.Sh SYNOPSIS
+.Nm
+.Fl h
+.Ar hdrfile
+.Fl f
+.Ar filelist
+.Fl o
+.Ar datafile
+.Op Fl s Ar sigfile
+.Fl t
+.Ar [FMR | FIR]
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to create a new Personal Identity Verification (PIV) record
+from a set of finger minutiae records (FMR) or finger image records (FIR),
+and PIV header information.
+If the type is 'FMR', the finger view records from all the FMRs are combined
+into a single FMR, which is then added to the PIV record after the CBEFF header.
+Similarly, if the type is 'FIR', then the finger image view records from all
+of the FIRs are combined into a single FIR, which is then added to the PIV
+record.
+The PIV record complies with NIST Special Publication 800-76-1, and is stored
+in the output file. 
+The FMRs are expected to comply with the ANSI/INCITS 378-2004 specification.
+The FIRs are expected to comply with the ANSI/INCITS 381-2004 specification.
+Note that it is possible to create a PIV record that is not compliant, by
+either having incorrect information in the header, by having more than
+two finger views, or with invalid finger minutiae records.
+.Pp
+Options:
+.Bl -tag
+.It Fl h
+specifies the file containing the PIV CBEFF header information. This file
+is a text file, and is in this form:
+.Bl -tag -width "Biometric Creation Date" -compact
+.It Cm Patron Header Version
+Hex; PIV requires 0x03.
+.It Cm SBH Security Options
+Hex; PIV requires 0x0D for minutiae records.
+.It Cm BDB Length
+Decimal; not currently used as the length is calculated.
+.It Cm SB Length
+Decimal; note that a signature block is not processed by
+.Nm .
+.It Cm BDB Format Owner
+Hex; PIV requires 0x001B.
+.It Cm BDB Format Type
+Hex; PIV requires 0x0201 for minutiae, 0x0401 for finger image.
+.It Cm Biometric Creation Date
+Hex; Up to 16 hex digits (8 bytes).
+.It Cm Validity Period
+Hex; Up to 32 hex digits (16 bytes).
+.It Cm Biometric Type
+Hex; PIV requires 0x000008 for finger images and minutiae.
+.It Cm Biometric Data Type
+Hex; PIV requires b100xxxxx for minutiae, b001xxxxx for images.
+.It Cm Biometric Data Quality
+Decimal.
+.It Cm Creator
+String; Up to 17 characters in length.
+.It Cm FASC-N
+Hex; Up to 50 hex digits (25 bytes).
+.It Cm Reserved
+Hex; PIV requires 0x00000000.
+.El
+.It Fl f
+specifies the file containing a list of files that contain complete FMRs or
+FIRs.
+.It Fl o
+specifies the name of the output file. This file must not exist.
+.It Fl s
+specifies the name of the file containing the signature block to attach to the
+ end of the record. For a properly formed PIV record, the size of this file
+should match the length specified in the CBEFF header, although no check is
+made by this program.
+.It Fl t
+specifies the type of biometric data, either FMR or FIR.
+.El
+.Pp
+The
+.Nm
+program exits with one of the following values:
+.Bl -tag -width Ds
+.It 0
+File was successfully created.
+.It -1
+An error occurred.
+.El
+.Sh EXAMPLES
+.Bd -literal
+m1rec2piv -h hdr.txt -f fmrs.txt -o piv.raw -s sb.raw -t fmr
+.Ed
+.Sh FILES
+Example PIV CBEFF header info file:
+
+0x03 0x0D 0 0 0x001B 0x0201 0x14050C0F11231D5A
+0x14050C0F11231D5A14050C0F11231D5A 0x000008 0x80 80 NIST-IAD
+0x00000000000000000000000000000000000000000000000000 0x00000000
+
+(The above example is shown as three lines; in the actual file the information
+must be on a single line.)
+.Sh SEE ALSO
+.Xr pivv 1 ,
+.Xr prfmr 1 .
+.Sh STANDARDS
+``Biometric Specification for Personal Identity Verification'', NIST
+Special Publication 800-76-1, September 05, 2006.
+.Pp
+``Finger Minutiae Format for Data Interchange'', ANSI INCITS 378-2004.
+``Finger Image-Based Data Interchange Format'', ANSI INCITS 385-2004.
+.Sh HISTORY
+Created August 30th, 2006 by NIST.
+
+Signature block option added December 9th, 2008 by NIST.

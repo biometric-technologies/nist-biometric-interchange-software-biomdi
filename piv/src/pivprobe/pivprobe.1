@@ -1,0 +1,29 @@
+.\""
+.Dd May 16, 2008
+.Dt PIVPROBE 1  
+.Sh NAME
+.Nm pivprobe
+.Nd Probe a PIV card and save some information from the card.
+.Sh SYNOPSIS
+.Nm
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to retrieve the data from a PIV card, saving to a set of
+files. The protected data can only be retrieved by using the user PIN. If
+the PIN is not available, or that data is not desired, then pressing
+CTRL-C then ENTER at the PIN prompt will terminate the program, leaving
+the files that have already been created in place.
+.Sh SEE ALSO
+.Xr pivv 1 ,
+.Xr prfir 1 .
+.Sh STANDARDS
+``Biometric Specification for Personal Identity Verification'', NIST
+Special Publication 800-76.
+.Pp
+``Finger Minutiae Format for Data Interchange'', ANSI INCITS 378-2004.
+.Pp
+``Finger Image-Based Data Interchange Format'', ANSI INCITS 381-2004.
+.Sh HISTORY
+Created May 16th, 2008 by NIST.

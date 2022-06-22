@@ -1,0 +1,44 @@
+.\""
+.Dd February 13, 2008
+.Dt IREXV 1  
+.Os Mac OS X       
+.Sh NAME
+.Nm irexv
+.Nd Validate, according to the NIST IREX test specification, the Iris Image
+Biometric Data Blocks that are contained within a single file.
+.Sh SYNOPSIS
+.Nm
+.Ar infile
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to validate IREX compliant iris image data
+records that are contained within a single file. The
+.Nm
+command validates the record based on constraints specified in the IREX
+test document, as well as against ISO/IEC 19794-6:2005.
+Exit codes are set based on the result of the validation.
+.Pp
+.Sh RETURN VALUES
+The
+.Nm
+command returns EXIT_SUCCESS (0) if the iris data records are valid,
+EXIT_FAILURE if they are invalid, or some other error occurs
+(failure to open the input file, for example).
+.Sh EXAMPLES
+.Nm
+sample.iid
+.Pp
+Validate all the iris data records contained within the file.
+.Sh SEE ALSO
+.Xr exit 3 .
+.Sh STANDARDS
+``Iris Exchange (IREX) Evaluation 2008: Concept, Evaluation Plan and API'',
+Patrick Grother, NIST, June 23, 2008; http://iris.nist.gov
+.Pp
+``Information technology - Biometric data interchange formats - Part 6: Iris
+image data'', ISO/IEC 19794-6:2005, June 1, 2005.
+.Sh HISTORY
+Created February 13th, 2008 by NIST.
+Updated July 8th, 2008 by NIST.

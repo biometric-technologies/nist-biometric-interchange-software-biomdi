@@ -1,0 +1,55 @@
+.\""
+.Dd October 17, 2008
+.Dt MKIREX 1  
+.Os Mac OS X       
+.Sh NAME
+.Nm mkirex
+.Nd Create a file containing a single Iris Image Data record that conforms
+to the NIST IREX test specification.
+.Sh SYNOPSIS
+.Nm
+.Fl i
+.Ar pgmfile
+.Fl eL | Fl eR
+.Fl o
+.Ar outfile
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to create a file containing a single IREX data record. The
+record is a combination of some default and computed values in the record
+headers, and raw image data from a Portable Gray Map (PGM) file.
+.Pp
+The options are as follows:
+.Bl -tag -width xp
+.It Fl i
+The name of the input PGM file;
+.It Fl o
+The name of the output file when degrading or converting images;
+.It Fl e
+The eye position; must be one of 'L' or 'R'.
+.El
+.Sh RETURN VALUES
+The
+.Nm
+command returns EXIT_SUCCESS (0) on success, or EXIT_FAILURE if there was an
+error, such as a missing file, or bad data in the file.
+.Sh EXAMPLES
+.Nm
+-i eyeleft.pgm -eL -o sample.irex
+.Pp
+Will produce the file containing one IREX record with the image data.
+.Sh SEE ALSO
+.Xr priibdb 1 ,
+.Xr irexv 1 ,
+.Xr irextool 1 ,
+.Xr exit 3 .
+.Sh STANDARDS
+``Iris Exchange (IREX) Evaluation 2008: Concept, Evaluation Plan and API'',
+Patrick Grother, NIST, June 23, 2008; http://iris.nist.gov
+.Pp
+``Information technology - Biometric data interchange formats - Part 6: Iris
+image data'', ISO/IEC 19794-6:2005, June 1, 2005.
+.Sh HISTORY
+Created October 17th, 2008 by NIST.

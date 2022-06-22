@@ -1,0 +1,21 @@
+--------------------------------------------------------------------------------
+This software was developed at the National Institute of Standards and
+Technology (NIST) by employees of the Federal Government in the course
+of their official duties. Pursuant to title 17 Section 105 of the
+United States Code, this software is not subject to copyright protection
+and is in the public domain. NIST assumes no responsibility  whatsoever for
+its use by other parties, and makes no guarantees, expressed or implied,
+about its quality, reliability, or any other characteristic.
+--------------------------------------------------------------------------------
+
+This distribution contains the library and utility programs in support of the
+NIST IREX test. Some of the functionality provided by the library and programs
+requires other libraries to be installed. The IREX library requires that the
+Jasper JPEG-2000 and GD library and header files be installed. Jasper and GD
+are often available as a installable package on many systems. 
+Alternatively, GD can be obtained from http://www.boutell.com/gd/
+and Jasper can be obtained from http://www.ece.uvic.ca/~mdadams/jasper/
+
+NOTE: As of October 2009, this package is no longer being maintained and
+exists for historical reasons only. The last version of code herein is that
+used for the NIST IREX 2008 Evaluation.

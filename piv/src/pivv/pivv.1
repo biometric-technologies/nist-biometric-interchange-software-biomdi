@@ -1,0 +1,105 @@
+.\""
+.Dd September 19, 2006
+.Dt PIVV 1  
+.Sh NAME
+.Nm pivv
+.Nd Verify that a biometric data from a Personal Identity Verification
+(PIV) record meets the criteria specified in NIST Special Publication 800-76.
+.Sh SYNOPSIS
+.Nm
+.Op Fl p
+.Op Fl c
+.Op Fl b
+.Ar datafile
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to validate a file containing PIV biometric data according
+to the specifcation in NIST Special Publication 800-76. The validation includes
+checking the CBEFF header and the biometric records. Currently, the Finger
+Minutiae Record (FMR) and Finger Image Record (FIR) formats are supported.
+The FMR and FIR libraries are used to read the portion of the record according
+to appropriate ANSI/INCITS specifications. Additional checks are made on the 
+CBEFF header(s), the FMR(s), and the FIR(s) according to NIST SP 800-76.
+.Pp
+The output of the program is a set of text messages. ERROR messages are
+violations of the PIV testing criteria. INFO messages indicate areas
+where the M1 record doesn't meet expectations, but is not in technical
+violation.
+.Pp
+Options:
+.Bl -tag
+.It Fl p
+will cause
+.Nm
+to print the CBEFF header and biometric records in human-readable form.
+Partial information will still be presented in some of the failure cases.
+.It Fl c
+will cause
+.Nm
+to validate the CBEFF header.
+.It Fl b
+will cause
+.Nm
+to validate the biometric records according to both SP 800-76 and 
+ANSI/INCITS specifications.
+.El
+.Pp
+If neither the
+.Fl c
+or
+.Fl b
+options are given, then validation is done for both the CBEFF header
+and the biometric records. This behavior is equivalent to giving
+.Fl cb
+on the command line.
+.Pp
+.Sh RETURN VALUES
+The
+.Nm
+program exists with one of the following values:
+.Bl -tag -width Ds
+.It 0
+Data file is valid.
+.It -1
+An I/O error occurred.
+.It -2
+The data file is not valid.
+.It -3
+Program invocation is incorrect.
+.El
+.Sh EXAMPLES
+.Bd -literal
+pivv -cb piv.raw
+.Ed
+.Pp
+Might produce output similar to:
+.Pp
+.Bd -literal
+== Biometric Entry 001 ====================================================
+Finger Minutiae Record validation:
+        Passes INCITS-381 criteria.
+        Passes PIV criteria.
+CBEFF Header validation:
+ERROR: SB Length invalid value 0.
+        Passes PIV criteria.
+
+== Biometric Entry 002 ====================================================
+Finger Image Record validation:
+        Passes INCITS-381 criteria.
+CBEFF Header validation:
+        Does NOT pass PIV criteria.
+.Ed
+.Sh SEE ALSO
+.Xr prfmr 1 ,
+.Xr prfir 1 .
+.Sh STANDARDS
+``Biometric Specification for Personal Identity Verification'', NIST
+Special Publication 800-76.
+.Pp
+``Finger Minutiae Format for Data Interchange'', ANSI INCITS 378-2004.
+.Pp
+``Finger Image-Based Data Interchange Format'', ANSI INCITS 381-2004.
+.Sh HISTORY
+Created September 19th, 2006 by NIST.

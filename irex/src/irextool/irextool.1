@@ -1,0 +1,127 @@
+.\""
+.Dd September 3, 2008
+.Dt IREXTOOL 1  
+.Os Mac OS X       
+.Sh NAME
+.Nm irextool
+.Nd Manipulate, according to the NIST IREX test specification, the Iris Image
+Biometric Data Block that is contained within a file.
+.Sh SYNOPSIS
+.Nm
+.Fl i
+.Ar infile
+.Fl xp | Fl xr
+.Fl p
+.Ar prefix
+.Nm
+.Fl i
+.Ar infile
+.Fl xn
+.Op Fl f
+.Fl p
+.Ar prefix
+.Nm
+.Fl i
+.Ar infile
+.Fl r
+.Ar rate
+.Fl o
+.Ar outfile
+.Nm
+.Fl i
+.Ar infile
+.Fl cp
+.Fl o
+.Ar outfile
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to manipulate IREX compliant iris image data
+records that are contained within a single file. The first form of
+invocation is to extract images from the iris image data file, saving them
+as PGM or RAW files.
+.Pp
+The second form of invocation is used to extract the image data and save
+as a Portable Network Graphics (PNG) file, optionally plotting the Freeman
+chain code data on the image.  This form of invocation is only present if the
+IREX package was built with the USE_IMGLIBS option.
+.Pp
+The third form of invocation is used to degrade an image contained with
+the iris image data file, creating a new data file with the degraded image.
+The method of degradation is via JPEG transformation, where the image
+is converted to JPEG using the specified bit rate.  This form of invocation is
+only present if the IREX package was built with the USE_IMGLIBS option.
+.Pp
+The fourth form of invocation is used to convert an image record from
+unsegmented polar to a rectilinear reconstruction of the image. The method of
+conversion is bicubic.
+.Pp
+The options are as follows:
+.Bl -tag -width xp
+.It Fl i
+The name of the input file;
+.It Fl p
+The prefix used to create the names for the image files;
+.It Fl xp
+Create Portable Gray Map (PGM) file(s) containing the image data;
+.It Fl xr
+Create RAW file(s) containing the image data;
+.It Fl xn
+Create PNG file(s) containing the image data;
+.It Fl f
+Plot the Freeman chain code (FCC) data on the PNG image;
+.It Fl cp
+Convert a polar record to rectilinear format. An error status is returned if
+the input record is not an unsegmented polar kind;
+.It Fl o
+The name of the output file when degrading or converting images;
+.It Fl r
+The JPEG bit rate for the degraded image.
+.El
+.Pp
+Only one of
+.Fl xp
+or
+.Fl xr
+is allowed.
+.Sh RETURN VALUES
+The
+.Nm
+command returns EXIT_SUCCESS (0) on success, or EXIT_FAILURE if there was an
+error, such as a missing file, or bad data in the file.
+.Sh EXAMPLES
+.Nm
+-i sample.iid -xp -p image
+.Pp
+Will produce the image output file named image-1.pgm.
+.Nm
+-i sample.iid -xn -f -p image 
+.Pp
+Will produce the image output file named image-1.png with the FCC data plotted.
+.Pp
+.Nm
+-i IREX-Sample.iid -r 0.01 -o IREX-Sample_Degraded.iid
+.Pp
+Will produce a new Iris Image Data Block file with the image(s) degraded
+via a conversion to JPEG at a bit rate of 0.01, then converted back to RAW.
+.Pp
+.Nm
+-i IREX-Polar.iid -cp -o IREX-Rectilinear.iid
+.Pp
+Will produce a new Iris Image Data Block file with the image(s) converted
+from unsegmented polar to rectilinear reconstruction of the image.
+.Sh SEE ALSO
+.Xr priibdb 1,
+.Xr irexv 1,
+.Xr exit 3 .
+.Sh STANDARDS
+``Iris Exchange (IREX) Evaluation 2008: Concept, Evaluation Plan and API'',
+Patrick Grother, NIST, June 23, 2008; http://iris.nist.gov
+.Pp
+``Information technology - Biometric data interchange formats - Part 6: Iris
+image data'', ISO/IEC 19794-6:2005, June 1, 2005.
+.Sh HISTORY
+Created September 3rd, 2008 by NIST.
+Image degradation feature added September 17, 2008 by NIST.
+Polar to rectilinear conversion added September 25, 2008 by NIST.

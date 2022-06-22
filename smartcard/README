@@ -1,0 +1,18 @@
+--------------------------------------------------------------------------------
+This software was developed at the National Institute of Standards and
+Technology (NIST) by employees of the Federal Government in the course
+of their official duties. Pursuant to title 17 Section 105 of the
+United States Code, this software is not subject to copyright protection
+and is in the public domain. NIST assumes no responsibility  whatsoever for
+its use by other parties, and makes no guarantees, expressed or implied,
+about its quality, reliability, or any other characteristic.
+--------------------------------------------------------------------------------
+
+The smartcard sub-project contains libraries and utilities for communicating
+with a smartcard on a PC platform. The PCSC support libraries must be installed
+prior to building this sub-project. On RedHat/CentOS systems these are the
+pcsc-lite and pcsc-lite-devel packages.
+
+OS-X includes PCSC development headers after installing "Command Line Tools,"
+or by building with xcrun. Refer to Apple Technical Note TN 2339 for details:
+https://developer.apple.com/library/ios/technotes/tn2339/_index.html

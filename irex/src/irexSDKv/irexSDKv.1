@@ -1,0 +1,47 @@
+.\""
+.Dd February 13, 2008
+.Dt IREXV 1  
+.Os Mac OS X       
+.Sh NAME
+.Nm irexSDKv
+.Nd Run a IREX 08 implementation, and generate instances of the IREX Table 6 record
+and their respective templates, and then match those templates.
+.Sh SYNOPSIS
+.Nm
+.Ar infile
+.Pp
+.Sh DESCRIPTION
+The
+.Nm
+command is used to ensure correct operation of an IREX implementation.
+It does this by generating data that can be compared with
+that produced at NIST using the same driver, the same library,
+and the same input imagery.
+.Nm
+The command reads a set of 11 images, processes them under
+using the API calls defined IREX Test Plan
+Exit codes are set based on the result of the validation.
+.Pp
+.Sh RETURN VALUES
+The
+.Nm
+command returns EXIT_SUCCESS (0) if the iris data records are valid,
+EXIT_FAILURE if they are invalid, or some other error occurs
+(failure to open the input file, for example).
+.Sh EXAMPLES
+.Nm
+No arguments
+.Pp
+Compile using these flags as appropriate:
+-DIREX_CROP -DIREX_MASK -DIREX_UNSEGPOLAR
+.Sh SEE ALSO
+.Xr exit 3 .
+.Sh STANDARDS
+``Iris Exchange (IREX) Evaluation 2008: Concept, Evaluation Plan and API'',
+Patrick Grother, NIST, September 15, 2008; http://iris.nist.gov
+.Pp
+``Information technology - Biometric data interchange formats - Part 6: Iris
+image data'', ISO/IEC 19794-6:2005, June 1, 2005.
+.Sh HISTORY
+Created September 15th, 2008 by NIST.
+Updated September 23rd, 2008 by NIST.

@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------
+This software was developed at the National Institute of Standards and
+Technology (NIST) by employees of the Federal Government in the course
+of their official duties. Pursuant to title 17 Section 105 of the
+United States Code, this software is not subject to copyright protection
+and is in the public domain. NIST assumes no responsibility  whatsoever for
+its use by other parties, and makes no guarantees, expressed or implied,
+about its quality, reliability, or any other characteristic.
+--------------------------------------------------------------------------------
+
+This package contains applications that use the BIOMDI libraries to process
+biometric data obtained from smart cards, or as part of a NIST evaluation
+program. Summaries are provided below:
+
+smartcard	Libraries and tools to communicate with smart cards and 
+		manipulate tag-length-value objects. An implementation of the
+		personal computer smart card (PC/SC) specification needs to
+		be installed prior to building the smart card tools. On Linux
+		and Mac OS-X systems, pcsclite is typically used.
+
+matchoncard	Tools and example test drivers used for the NIST Match-on-Card
+		evaluation. Uses the smart card library.
+
+irex		Tools and libraries used in the NIST IREX evaluation. See
+		http://iris.nist.gov/irex/
+
+irexsdkv	An example test driver for the NIST IREX evaluation.
+
+piv		Libraries and tools used to manipulate and verify components
+		of the Personal Identity Verification (PIV) records. Uses the
+		smart card library.

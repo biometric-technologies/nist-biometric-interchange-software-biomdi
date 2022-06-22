@@ -1,0 +1,40 @@
+This directory contains the test programs for the MOC libraries and card
+interfaces. Much of the code in these test programs was then merged into
+the MOC test driver programs.
+
+These test programs are useful not only for testing the MOC functions, but
+also for displaying the BIT from a card, or producing the compact card
+templates.
+
+Program description:
+
+	testbit - Test a Biometric Information Template (BIT) contained in
+	          a file.
+        testmocprune - Test the match-on-card prune/sort/convert function,
+                       using an ANSI-378 template file, min/max minutiae, and
+                       sorting criteria. This program can be used to create
+                       the converted CC record using the same parameters that
+                       are in a card's BIT.
+	testmtdo - Test the created of a Minutiae Template Data Object, as
+                   described in the MINEX-II specification. A ISO-CC template
+                   file is read in and converted to a Tag-Length-Value data
+                   object, and then printed to stdout.
+
+If you run testmocprune to prune/convert/sort some ANSI-378 files, then run
+testmtdo on those file, you'll have a print out of the minutiae template
+data object that is sent to the card for ENROLL and VERIFY.
+
+	testcardaccess - Test some basic smart card access, using a Personal
+                         Identity Verification (PIV) card with a specific
+	                 password, hard-coded in the test program. This program
+                         is a left over from other testing, but is still
+                         useful.
+Some of the test programs require a file containing data for input, and
+example files are included in this directory. They are:
+	BIT.dat - Input data for the testbit program; Contains a sample
+		  Biometric Information Template (BIT) group with two BITs.
+	ISOCC.min - Contains a set of minutiae ISO compact card format for
+		    the testmtdo program.  Each minutiae point is represented
+		    with three bytes, and no header information is present.
+		    Be aware that reading this file will cause an EOF warning
+		    out of the testmtdo program.
