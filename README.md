@@ -34,7 +34,7 @@ Requirements, from the package READMEs: the BiomDI core libraries installed firs
 
 - [biometric-converter](https://github.com/biometric-technologies/biometric-converter): the converter that depends on BiomDI and NBIS.
 - [nist-biometric-image-software-nbis](https://github.com/biometric-technologies/nist-biometric-image-software-nbis): mirror of NIST NBIS (minutiae detection, matching, WSQ).
-- [docs](https://github.com/biometric-technologies/docs): source of the developer documentation at docs.iriscan.net.
+- [docs](https://github.com/biometric-technologies/docs): source of the developer documentation at docs.iriscan.com.
 
 ## License
 
