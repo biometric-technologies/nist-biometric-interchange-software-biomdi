@@ -42,4 +42,4 @@ Public domain. The software was developed at NIST by employees of the US Federal
 
 ## Contact
 
-Questions about this mirror or the converter: info@iriscan.net, https://www.iriscan.com. For BiomDI itself, see NIST's biometric software pages.
+Questions about this mirror or the converter: info@iriscan.com, https://www.iriscan.com. For BiomDI itself, see NIST's biometric software pages.
